@@ -18,7 +18,8 @@
     },
     "win": {
       "target": "portable"
-    }
+    },
+    "extraResources": ["./data/**"]
   },
   "keywords": [],
   "author": "nhanc18",

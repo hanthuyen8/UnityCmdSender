@@ -1,7 +1,8 @@
 const {exec} = require('child_process');
 const commandExists = require('command-exists');
 const ElectronStore = require('electron-store');
-const fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 
 const adbError = `Cannot get adb path!`;
 const storage = new ElectronStore();
@@ -35,12 +36,13 @@ function loadSampleCmdData() {
     const infoDiv = document.getElementById(kIdCmdSelectorDiv);
 
     try {
-        const path = `./data/${pkgSelector.value}.json`;
-        if (!fs.existsSync(path)) {
+        const filePath = path.join(__dirname, `data/${pkgSelector.value}.json`);
+        console.log(filePath);
+        if (!fs.existsSync(filePath)) {
             infoDiv.className = kClassHidden;
             return;
         }
-        const content = fs.readFileSync(path, 'utf-8');
+        const content = fs.readFileSync(filePath, 'utf-8');
         const json = JSON.parse(content);
 
         const cmdSelector = document.getElementById(kIdCmdSelector);
