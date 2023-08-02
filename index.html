@@ -12,16 +12,17 @@
             color: #111;
         }
 
+        .pad {
+            margin: 5px 0 5px 0;
+        }
+
         .box {
             padding: 2rem;
         }
 
         .inputText {
             width: 100%;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            padding: 10px 5px 10px 5px;
             display: block;
             font-family: Arial, Helvetica, sans-serif;
             border: 1px solid #555;
@@ -31,7 +32,6 @@
         .btn {
             width: 100%;
             height: 2rem;
-            margin: 5px;
             display: block;
             color: white;
             background-color: dodgerblue;
@@ -42,76 +42,83 @@
             display: block;
             width: 50%;
             height: 2rem;
-            margin-top: 10px;
-            margin-bottom: 10px;
             border: 1px solid #555;
             border-radius: 5px;
+        }
+
+        .error {
+            color: crimson;
+            margin: 5px 0 5px 0;
+        }
+
+        .success {
+            color: dodgerblue;
+            margin: 5px 0 5px 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="box">
-        ADB Path:
-        <input type="text" id="adbPath" class="inputText" spellcheck="false"><br>
-        Select Package:
-        <select id="packageSelector" onchange="setPackageName()" class="dropdown">
-            <option value="">Select...</option>
+<div class="box">
+    <label for="adbPath">ADB Path</label>
+    <input type="text" id="adbPath" class="inputText pad" spellcheck="false">
+    <label for="packageSelector">Select package</label>
+    <select id="packageSelector" onchange="setPackageName()" class="dropdown pad">
+        <option value="">Select...</option>
 
-            <option value="com.senspark.bombsquad.bombbomb.free.arcade.contra.classicgame">bombsquad</option>
-            <option value="com.senspark.OnlineChineseChess">cc</option>
-            <option value="com.senspark.mine.build.block.craft.free.game">craft</option>
-            <option value="com.senspark.android.domino">domino</option>
-            <option value="com.senspark.fishhunter">fishhunter</option>
-            <option value="com.senspark.galaxyshooter">galaxyshooter</option>
-            <option value="com.senspark.goldminerclassic">gm1</option>
-            <option value="com.senspark.goldminerdeluxe">gm2</option>
-            <option value="com.senspark.goldminerclassicorigin">gm5</option>
-            <option value="com.senspark.goldminervegas.origin">gm6</option>
-            <option value="com.senspark.goldrush.goldminer.worldtour">gm7</option>
-            <option value="com.senspark.goldminerclassicpvp">gm8</option>
-            <option value="com.senspark.gm9">gm9</option>
-            <option value="com.senspark.goldminer.gm10">gm10</option>
-            <option value="com.senspark.goldminer.gm11">gm11</option>
-            <option value="com.senspark.android.vietnamese_poker">maubinh</option>
-            <option value="com.senspark.onetclassic">onet</option>
-            <option value="com.senspark.onnect.onet.connect.matchinggames.puzzle">onet2</option>
-            <option value="com.senspark.android.phom">phom</option>
-            <option value="com.senspark.billiards.ball.pool.free.shooting.game">poolcity</option>
-            <option value="us.can0p.shootdinosaureggs">sde1</option>
-            <option value="com.senspark.candysolitaire">solitaire</option>
-            <option value="com.senspark.stickman.anger.stick.fight.zombie.free.game">stickaction</option>
-            <option value="com.senspark.supreme.stickman.duelist.battle.stick.fight.war.free.game">stickduel</option>
-            <option value="com.senspark.stickwar">stickwar1</option>
-            <option value="com.senspark.stickwar2.empires.war.fight.battle.free.game">stickwar2</option>
-            <option value="com.senspark.stickwar3">stickwar3</option>
-            <option value="com.senspark.android.tank1990">tank1</option>
-            <option value="com.senspark.android.southernthirteen">tienlen</option>
+        <option value="com.senspark.bombsquad.bombbomb.free.arcade.contra.classicgame">bombsquad</option>
+        <option value="com.senspark.OnlineChineseChess">cc</option>
+        <option value="com.senspark.mine.build.block.craft.free.game">craft</option>
+        <option value="com.senspark.android.domino">domino</option>
+        <option value="com.senspark.fishhunter">fishhunter</option>
+        <option value="com.senspark.galaxyshooter">galaxyshooter</option>
+        <option value="com.senspark.goldminerclassic">gm1</option>
+        <option value="com.senspark.goldminerdeluxe">gm2</option>
+        <option value="com.senspark.goldminerclassicorigin">gm5</option>
+        <option value="com.senspark.goldminervegas.origin">gm6</option>
+        <option value="com.senspark.goldrush.goldminer.worldtour">gm7</option>
+        <option value="com.senspark.goldminerclassicpvp">gm8</option>
+        <option value="com.senspark.gm9">gm9</option>
+        <option value="com.senspark.goldminer.gm10">gm10</option>
+        <option value="com.senspark.goldminer.gm11">gm11</option>
+        <option value="com.senspark.android.vietnamese_poker">maubinh</option>
+        <option value="com.senspark.onetclassic">onet</option>
+        <option value="com.senspark.onnect.onet.connect.matchinggames.puzzle">onet2</option>
+        <option value="com.senspark.android.phom">phom</option>
+        <option value="com.senspark.billiards.ball.pool.free.shooting.game">poolcity</option>
+        <option value="us.can0p.shootdinosaureggs">sde1</option>
+        <option value="com.senspark.candysolitaire">solitaire</option>
+        <option value="com.senspark.stickman.anger.stick.fight.zombie.free.game">stickaction</option>
+        <option value="com.senspark.supreme.stickman.duelist.battle.stick.fight.war.free.game">stickduel</option>
+        <option value="com.senspark.stickwar">stickwar1</option>
+        <option value="com.senspark.stickwar2.empires.war.fight.battle.free.game">stickwar2</option>
+        <option value="com.senspark.stickwar3">stickwar3</option>
+        <option value="com.senspark.android.tank1990">tank1</option>
+        <option value="com.senspark.android.southernthirteen">tienlen</option>
 
-            <!-- Add more options as needed -->
-        </select>
-        Package Name:
-        <input type="text" id="packageName" class="inputText" spellcheck="false"><br>
-        Command:
-        <input type="text" id="cmd" class="inputText" spellcheck="false"><br>
-        Data:
-        <textarea name="data" id="data" class="inputText" cols="40" rows="5" spellcheck="false">
-        </textarea>
-        <br>
-        <button onclick="runCommand()" id="runBtn" class="btn">Run</button>
-        <script src="script.js"></script>
-    </div>
-    <script>
-        // start up
-        loadData();
-        getAdbPath();
+        <!-- Add more options as needed -->
+    </select>
+    <label for="packageName">Package name</label>
+    <input type="text" id="packageName" class="inputText pad" spellcheck="false">
+    <label for="cmd">Command</label>
+    <input type="text" id="cmd" class="inputText pad" spellcheck="false">
+    <label for="data">Data</label>
+    <textarea name="data" id="data" class="inputText pad" cols="40" rows="5" spellcheck="false"></textarea>
+    <div id="error"></div>
+    <button onclick="runCommand()" id="runBtn" class="btn pad">Run</button>
+    <script src="script.js"></script>
+</div>
+<script>
+    // start up
+    loadData();
+    getAdbPath();
 
-        const defaultCmd = "test-notification";
-        document.getElementById('cmd').value = defaultCmd;
+    const defaultCmd = "test-notification";
+    document.getElementById('cmd').value = defaultCmd;
 
-        const defaultData = "banner-time-0-0-Đây là một đoạn text dài. Có thể hiển thị không đúng trên nhiều thiết bị.";
-        document.getElementById('data').value = defaultData;
-    </script>
+    const defaultData = "banner-time-0-0-Đây là một đoạn text dài. Có thể hiển thị không đúng trên nhiều thiết bị.";
+    document.getElementById('data').value = defaultData;
+</script>
 </body>
 
 </html>

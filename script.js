@@ -6,8 +6,8 @@ const adbError = `Cannot get adb path!`;
 const storage = new ElectronStore();
 
 function setPackageName() {
-  var selector = document.getElementById('packageSelector');
-  var packageNameInput = document.getElementById('packageName');
+  const selector = document.getElementById('packageSelector');
+  const packageNameInput = document.getElementById('packageName');
 
   packageNameInput.value = selector.value;
 }
@@ -26,19 +26,26 @@ function getAdbPath() {
 
 function runCommand() {
   document.getElementById('runBtn').disabled = true;
+  document.getElementById('error').innerText = '';
 
   const adbPath = document.getElementById('adbPath').value.trim();
   const packageName = document.getElementById('packageName').value.trim();
   const cmd = document.getElementById('cmd').value.trim();
   const data = document.getElementById('data').value.trim();
 
-  if (adbPath == '' || packageName == '' || cmd == '' || data == '') {
-    alert('Please fill all fields!');
+  if (adbPath === '' || packageName === '' || cmd === '' || data === '') {
+    const err = document.getElementById('error');
+    err.innerText = 'Phải điền đủ các ô!';
+    err.className = "error";
+
     document.getElementById('runBtn').disabled = false;
     return;
   }
-  if (adbPath == adbError) {
-    alert('Please enter correct adb path!');
+  if (adbPath === adbError) {
+    const err = document.getElementById('error');
+    err.innerText = 'Adb path không hợp lệ!';
+    err.className = "error";
+
     document.getElementById('runBtn').disabled = false;
     return;
   }
@@ -49,16 +56,22 @@ function runCommand() {
     document.getElementById('runBtn').disabled = false;
 
     if (error) {
-      alert(`error: ${error.message} `);
+      const err = document.getElementById('error');
+      err.innerText = `Error: ${error.message}`;
+      err.className = "error";
       return;
     }
 
     if (stderr) {
-      alert(`stderr: ${stderr} `);
+      const err = document.getElementById('error');
+      err.innerText = `Error: ${stderr}`;
+      err.className = "error";
       return;
     }
 
-    alert(`Command executed successfully!`);
+    const err = document.getElementById('error');
+    err.innerText = `Hoàn thành!`;
+    err.className = "success";
     saveData();
   });
 }
