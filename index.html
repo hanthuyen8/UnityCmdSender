@@ -18,6 +18,8 @@
 
         .box {
             padding: 2rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .inputText {
@@ -55,14 +57,22 @@
             color: dodgerblue;
             margin: 5px 0 5px 0;
         }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
 <div class="box">
-    <label for="adbPath">ADB Path</label>
+    <label for="adbPath">Đường dẫn ADB</label>
     <input type="text" id="adbPath" class="inputText pad" spellcheck="false">
-    <label for="packageSelector">Select package</label>
+    <label for="packageSelector">Package có sẵn</label>
     <select id="packageSelector" onchange="setPackageName()" class="dropdown pad">
         <option value="">Select...</option>
 
@@ -98,14 +108,18 @@
 
         <!-- Add more options as needed -->
     </select>
-    <label for="packageName">Package name</label>
+    <div id="cmdSelectorDiv" class="hidden">
+        <label for="cmdSelector">Lệnh có sẵn</label>
+        <select id="cmdSelector" class="dropdown pad"></select>
+    </div>
+    <label for="packageName">Tên Package</label>
     <input type="text" id="packageName" class="inputText pad" spellcheck="false">
-    <label for="cmd">Command</label>
+    <label for="cmd">Lệnh</label>
     <input type="text" id="cmd" class="inputText pad" spellcheck="false">
     <label for="data">Data</label>
     <textarea name="data" id="data" class="inputText pad" cols="40" rows="5" spellcheck="false"></textarea>
     <div id="error"></div>
-    <button onclick="runCommand()" id="runBtn" class="btn pad">Run</button>
+    <button onclick="runCommand()" id="runBtn" class="btn pad">Thực thi</button>
     <script src="script.js"></script>
 </div>
 <script>
