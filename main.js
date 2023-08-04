@@ -1,19 +1,19 @@
-const { app, BrowserWindow } = require('electron')
+const {app, BrowserWindow} = require('electron')
 const ElectronStore = require('electron-store');
 
 function createWindow() {
-  ElectronStore.initRenderer();
+    ElectronStore.initRenderer();
 
-  let win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-    }
-  });
+    let win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+        }
+    });
 
-  win.loadFile('index.html');
+    win.loadFile('index.html');
 }
 
 app.whenReady().then(createWindow);

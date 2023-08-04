@@ -3,6 +3,7 @@ const commandExists = require('command-exists');
 const ElectronStore = require('electron-store');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config()
 
 const adbError = `Cannot get adb path!`;
 const storage = new ElectronStore();
@@ -22,6 +23,15 @@ const kClassSuccess = 'success';
 const kClassHidden = 'hidden';
 const kClassVisible = 'visible';
 
+function getResourcePath() {
+    if (!process.env.NODE_ENV) {
+        process.env.NODE_ENV = "production";
+    } else if (process.env.NODE_ENV === "development") {
+        return __dirname;
+    }
+    return process.resourcesPath;
+}
+
 function setPackageName() {
     const pkgSelector = document.getElementById(kIdPkgSelector);
     const packageNameInput = document.getElementById(kIdPkgNameTxt);
@@ -36,9 +46,12 @@ function loadSampleCmdData() {
     const infoDiv = document.getElementById(kIdCmdSelectorDiv);
 
     try {
-        const filePath = path.join(__dirname, `data/${pkgSelector.value}.json`);
+        console.log(process.env.NODE_ENV);
+        const filePath = path.join(getResourcePath(), `data/${pkgSelector.value}.json`);
+        // const filePath = path.join(__dirname, `data/${pkgSelector.value}.json`);
         console.log(filePath);
         if (!fs.existsSync(filePath)) {
+            console.log('path not existed');
             infoDiv.className = kClassHidden;
             return;
         }
@@ -62,7 +75,7 @@ function loadSampleCmdData() {
         infoDiv.className = kClassVisible;
     } catch (e) {
         infoDiv.className = kClassHidden;
-        console.log(e);
+        console.log(e.message);
     }
 }
 
@@ -75,7 +88,7 @@ function setSampleCmd() {
         document.getElementById(kIdCmdTxt).value = json.cmd;
         document.getElementById(kIdDataTxt).value = json.sample;
     } catch (e) {
-        console.log(e);
+        console.log(e.message);
     }
 }
 

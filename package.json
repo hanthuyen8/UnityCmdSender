@@ -4,10 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "dist": "electron-builder",
-    "dist:mac": "electron-builder --mac",
-    "dist:win": "electron-builder --win"
+    "start": "NODE_ENV=development electron .",
+    "dist": "NODE_ENV=production electron-builder",
+    "dist:mac": "NODE_ENV=production electron-builder --mac",
+    "dist:win": "NODE_ENV=production electron-builder --win"
   },
   "build": {
     "appId": "com.nhanc18.unitycmdsender",
@@ -19,17 +19,21 @@
     "win": {
       "target": "portable"
     },
-    "extraResources": ["./data/**"]
+    "extraResources": [
+      "./data/**",
+      ".env"
+    ]
   },
   "keywords": [],
   "author": "nhanc18",
   "license": "ISC",
   "dependencies": {
     "command-exists": "^1.2.9",
+    "dotenv": "^16.3.1",
     "electron-store": "^8.1.0"
   },
   "devDependencies": {
-    "electron": "^25.3.2",
+    "electron": "^25.4.0",
     "electron-builder": "^24.6.3"
   }
 }
