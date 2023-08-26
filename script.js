@@ -23,6 +23,7 @@ const kClassSuccess = 'success';
 const kClassHidden = 'hidden';
 const kClassVisible = 'visible';
 
+// Lấy ra resource path tuỳ theo hệ điều hành
 function getResourcePath() {
     if (!process.env.NODE_ENV) {
         process.env.NODE_ENV = "production";
@@ -32,6 +33,7 @@ function getResourcePath() {
     return process.resourcesPath;
 }
 
+// Set Package name vào UI
 function setPackageName() {
     const pkgSelector = document.getElementById(kIdPkgSelector);
     const packageNameInput = document.getElementById(kIdPkgNameTxt);
@@ -41,6 +43,7 @@ function setPackageName() {
     loadSampleCmdData();
 }
 
+// Đọc file lệnh mẫu từ thư mục
 function loadSampleCmdData() {
     const pkgSelector = document.getElementById(kIdPkgSelector);
     const infoDiv = document.getElementById(kIdCmdSelectorDiv);
@@ -79,6 +82,7 @@ function loadSampleCmdData() {
     }
 }
 
+// Set Lệnh mẫu vào UI
 function setSampleCmd() {
     try {
         const cmdSelector = document.getElementById(kIdCmdSelector);
@@ -92,6 +96,7 @@ function setSampleCmd() {
     }
 }
 
+// Set Adb path vào UI
 function getAdbPath() {
     const adbPath = storage.get(kIdAdbPathTxt);
     if (adbPath) {
@@ -104,6 +109,7 @@ function getAdbPath() {
     });
 }
 
+// Chạy lệnh Adb
 function runCommand() {
     document.getElementById(kIdRunBtn).disabled = true;
     document.getElementById(kIdErrorDiv).innerText = '';
@@ -146,6 +152,7 @@ function runCommand() {
     });
 }
 
+// Lấy data auto complete đã lưu để hiển thị vào UI
 function loadData() {
     const adbPath = storage.get(kIdAdbPathTxt);
     const packageName = storage.get(kIdPkgNameTxt);
@@ -158,6 +165,7 @@ function loadData() {
     document.getElementById(kIdDataTxt).value = data;
 }
 
+// Lưu data để auto complete cho lần sau
 function saveData() {
     const adbPath = document.getElementById(kIdAdbPathTxt).value.trim();
     const packageName = document.getElementById(kIdPkgNameTxt).value.trim();
@@ -169,6 +177,7 @@ function saveData() {
     storage.set(kIdDataTxt, data);
 }
 
+// Hiển thị Error message lên màn hình
 function setError(error) {
     const err = document.getElementById(kIdErrorDiv);
     err.innerText = `Error: ${error}`;
