@@ -22,6 +22,19 @@
             flex-direction: column;
         }
 
+        .grp1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .grp1 .left {
+            flex-grow: 2;
+        }
+
+        .grp1 .right {
+            flex-grow: 1;
+        }
+
         .inputText {
             width: 100%;
             padding: 10px 5px 10px 5px;
@@ -72,42 +85,51 @@
 <div class="box">
     <label for="adbPath">Đường dẫn ADB</label>
     <input type="text" id="adbPath" class="inputText pad" spellcheck="false">
-    <label for="packageSelector">Package có sẵn</label>
-    <select id="packageSelector" onchange="setPackageName()" class="dropdown pad">
-        <option value="">Select...</option>
+    <div class="grp1">
+        <div class="left">
+            <label for="packageSelector">Package có sẵn</label>
+            <select id="packageSelector" onchange="setPackageName()" class="dropdown pad">
+                <option value="">Select...</option>
 
-        <option value="com.senspark.bombsquad.bombbomb.free.arcade.contra.classicgame">bombsquad</option>
-        <option value="com.senspark.OnlineChineseChess">cc</option>
-        <option value="com.senspark.mine.build.block.craft.free.game">craft</option>
-        <option value="com.senspark.android.domino">domino</option>
-        <option value="com.senspark.fishhunter">fishhunter</option>
-        <option value="com.senspark.galaxyshooter">galaxyshooter</option>
-        <option value="com.senspark.goldminerclassic">gm1</option>
-        <option value="com.senspark.goldminerdeluxe">gm2</option>
-        <option value="com.senspark.goldminerclassicorigin">gm5</option>
-        <option value="com.senspark.goldminervegas.origin">gm6</option>
-        <option value="com.senspark.goldrush.goldminer.worldtour">gm7</option>
-        <option value="com.senspark.goldminerclassicpvp">gm8</option>
-        <option value="com.senspark.gm9">gm9</option>
-        <option value="com.senspark.goldminer.gm10">gm10</option>
-        <option value="com.senspark.goldminer.gm11">gm11</option>
-        <option value="com.senspark.android.vietnamese_poker">maubinh</option>
-        <option value="com.senspark.onetclassic">onet</option>
-        <option value="com.senspark.onnect.onet.connect.matchinggames.puzzle">onet2</option>
-        <option value="com.senspark.android.phom">phom</option>
-        <option value="com.senspark.billiards.ball.pool.free.shooting.game">poolcity</option>
-        <option value="us.can0p.shootdinosaureggs">sde1</option>
-        <option value="com.senspark.candysolitaire">solitaire</option>
-        <option value="com.senspark.stickman.anger.stick.fight.zombie.free.game">stickaction</option>
-        <option value="com.senspark.supreme.stickman.duelist.battle.stick.fight.war.free.game">stickduel</option>
-        <option value="com.senspark.stickwar">stickwar1</option>
-        <option value="com.senspark.stickwar2.empires.war.fight.battle.free.game">stickwar2</option>
-        <option value="com.senspark.stickwar3">stickwar3</option>
-        <option value="com.senspark.android.tank1990">tank1</option>
-        <option value="com.senspark.android.southernthirteen">tienlen</option>
+                <option value="com.senspark.bombsquad.bombbomb.free.arcade.contra.classicgame">bombsquad</option>
+                <option value="com.senspark.OnlineChineseChess">cc</option>
+                <option value="com.senspark.mine.build.block.craft.free.game">craft</option>
+                <option value="com.senspark.android.domino">domino</option>
+                <option value="com.senspark.fishhunter">fishhunter</option>
+                <option value="com.senspark.galaxyshooter">galaxyshooter</option>
+                <option value="com.senspark.goldminerclassic">gm1</option>
+                <option value="com.senspark.goldminerdeluxe">gm2</option>
+                <option value="com.senspark.goldminerclassicorigin">gm5</option>
+                <option value="com.senspark.goldminervegas.origin">gm6</option>
+                <option value="com.senspark.goldrush.goldminer.worldtour">gm7</option>
+                <option value="com.senspark.goldminerclassicpvp">gm8</option>
+                <option value="com.senspark.gm9">gm9</option>
+                <option value="com.senspark.goldminer.gm10">gm10</option>
+                <option value="com.senspark.goldminer.gm11">gm11</option>
+                <option value="com.senspark.android.vietnamese_poker">maubinh</option>
+                <option value="com.senspark.onetclassic">onet</option>
+                <option value="com.senspark.onnect.onet.connect.matchinggames.puzzle">onet2</option>
+                <option value="com.senspark.android.phom">phom</option>
+                <option value="com.senspark.billiards.ball.pool.free.shooting.game">poolcity</option>
+                <option value="us.can0p.shootdinosaureggs">sde1</option>
+                <option value="com.senspark.candysolitaire">solitaire</option>
+                <option value="com.senspark.stickman.anger.stick.fight.zombie.free.game">stickaction</option>
+                <option value="com.senspark.supreme.stickman.duelist.battle.stick.fight.war.free.game">stickduel
+                </option>
+                <option value="com.senspark.stickwar">stickwar1</option>
+                <option value="com.senspark.stickwar2.empires.war.fight.battle.free.game">stickwar2</option>
+                <option value="com.senspark.stickwar3">stickwar3</option>
+                <option value="com.senspark.android.tank1990">tank1</option>
+                <option value="com.senspark.android.southernthirteen">tienlen</option>
 
-        <!-- Add more options as needed -->
-    </select>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="right">
+            <label for="fetchDataBtn">Cập nhật Lệnh có sẵn từ Server</label>
+            <button onClick="fetchData()" id="fetchDataBtn" class="btn">Update</button>
+        </div>
+    </div>
     <div id="cmdSelectorDiv" class="hidden">
         <label for="cmdSelector">Lệnh có sẵn</label>
         <select id="cmdSelector" class="dropdown pad"></select>
