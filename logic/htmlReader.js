@@ -7,6 +7,7 @@ const kIdCmdSelectorDiv = 'cmdSelectorDiv';
 const kIdRunBtn = 'runBtn';
 const kIdErrorDiv = 'error';
 const kIdAdbPathTxt = 'adbPath';
+const kIdFetchDataBtn = 'fetchDataBtn'
 
 const kClassError = 'error';
 const kClassSuccess = 'success';
@@ -51,6 +52,7 @@ const Helper = {
     kIdRunBtn,
     kIdErrorDiv,
     kIdAdbPathTxt,
+    kIdFetchDataBtn,
     // Classes
     kClassError,
     kClassSuccess,

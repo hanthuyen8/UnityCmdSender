@@ -149,12 +149,6 @@
     // start up
     loadUIData();
 
-    const defaultCmd = "test-notification";
-    document.getElementById('cmd').value = defaultCmd;
-
-    const defaultData = "banner-time-0-0-Đây là một đoạn text dài. Có thể hiển thị không đúng trên nhiều thiết bị.";
-    document.getElementById('data').value = defaultData;
-
     // Add click
     document.getElementById('fetchDataBtn').addEventListener('click', fetchDataFile);
     document.getElementById('runBtn').addEventListener('click', runCommand);
