@@ -17,8 +17,7 @@ function loadSampleCmdData() {
     const infoDiv = htmlReader.getCmdSelectorDiv();
 
     try {
-        const filePath = path.join(config.Config.getResourcePath(), `data/${pkgSelector.value}.json`);
-        // const filePath = path.join(__dirname, `data/${pkgSelector.value}.json`);
+        const filePath = path.join(config.getDataFolderPath(), `${pkgSelector.value}.json`);
         console.log(filePath);
         if (!fs.existsSync(filePath)) {
             console.log('path not existed');

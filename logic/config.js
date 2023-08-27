@@ -1,10 +1,8 @@
+const path = require("path");
+const storage = require("./storage");
 require('dotenv').config()
 
 const DataFolderName = "Data";
-
-const Path = {
-    userDataPath: '',
-};
 
 // Lấy ra resource path tuỳ theo hệ điều hành
 function getResourcePath() {
@@ -16,8 +14,11 @@ function getResourcePath() {
     return process.resourcesPath;
 }
 
-module.exports.Config = {
+function getDataFolderPath() {
+    return path.join(storage.get(storage.kUserDataPath), DataFolderName);
+}
+
+module.exports = {
     getResourcePath,
+    getDataFolderPath,
 };
-module.exports.DataFolderName = DataFolderName;
-module.exports.Path = Path;

@@ -1,9 +1,8 @@
 const {exec} = require('child_process');
-const ElectronStore = require("electron-store");
 const commandExists = require('command-exists');
-const storage = new ElectronStore();
 
 const htmlReader = require('./htmlReader').Helper;
+const storage = require('./storage');
 
 const adbError = `Cannot get adb path!`;
 

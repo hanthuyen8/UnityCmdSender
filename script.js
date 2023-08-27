@@ -8,7 +8,11 @@ function loadUIData() {
 }
 
 function fetchDataFile() {
-    syncFile.SyncFile.fetchDataFile();
+    syncFile.SyncFile.fetchDataFile(completed => {
+        if (completed) {
+            setPackageName();
+        }
+    });
 }
 
 function setPackageName() {

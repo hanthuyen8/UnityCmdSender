@@ -4,28 +4,40 @@ const path = require('path');
 const config = require('./config');
 const reader = require('./htmlReader');
 
-function fetchDataFile() {
+module.exports.SyncFile = {
+    fetchDataFile,
+};
+
+function fetchDataFile(onCompleted) {
     const packageName = reader.Helper.getPackageValue();
     const fileName = `${packageName}.json`;
     const host = `https://app-test.bombcrypto.io/nhanc18/unity_cmd_sender/`;
     const requestPath = `${host}${fileName}`;
-    const savePath = path.join(config.Path.userDataPath, config.DataFolderName, fileName);
+    const saveFolderPath = config.getDataFolderPath();
+    const saveFilePath = path.join(saveFolderPath, fileName);
 
     fetch(requestPath)
         .then(response => response.arrayBuffer())
         .then(buffer => {
             const uint8Array = new Uint8Array(buffer);
 
-            fs.writeFile(savePath, uint8Array, (err) => {
+            if (!fs.existsSync(saveFolderPath)) {
+                fs.mkdirSync(saveFolderPath, {recursive: true});
+            }
+            fs.writeFile(saveFilePath, uint8Array, (err) => {
                 if (err) {
                     throw err;
                 }
-                console.log('The file has been saved!');
+                console.log(`Saved ${fileName} to ${saveFilePath}`);
+                if (onCompleted) {
+                    onCompleted(true);
+                }
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            if (onCompleted) {
+                onCompleted(false);
+            }
+        });
 }
-
-module.exports.SyncFile = {
-    fetchDataFile,
-};
