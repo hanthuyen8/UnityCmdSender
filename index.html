@@ -79,6 +79,8 @@
             display: block;
         }
     </style>
+
+    <script src="./script.js"></script>
 </head>
 
 <body>
@@ -88,7 +90,7 @@
     <div class="grp1">
         <div class="left">
             <label for="packageSelector">Package có sẵn</label>
-            <select id="packageSelector" onchange="setPackageName()" class="dropdown pad">
+            <select id="packageSelector" class="dropdown pad">
                 <option value="">Select...</option>
 
                 <option value="com.senspark.bombsquad.bombbomb.free.arcade.contra.classicgame">bombsquad</option>
@@ -127,7 +129,7 @@
         </div>
         <div class="right">
             <label for="fetchDataBtn">Cập nhật Lệnh có sẵn từ Server</label>
-            <button onClick="fetchData()" id="fetchDataBtn" class="btn">Update</button>
+            <button id="fetchDataBtn" class="btn">Update</button>
         </div>
     </div>
     <div id="cmdSelectorDiv" class="hidden">
@@ -141,19 +143,22 @@
     <label for="data">Data</label>
     <textarea name="data" id="data" class="inputText pad" cols="40" rows="5" spellcheck="false"></textarea>
     <div id="error"></div>
-    <button onclick="runCommand()" id="runBtn" class="btn pad">Thực thi</button>
-    <script src="script.js"></script>
+    <button id="runBtn" class="btn pad">Thực thi</button>
 </div>
 <script>
     // start up
-    loadData();
-    getAdbPath();
+    loadUIData();
 
     const defaultCmd = "test-notification";
     document.getElementById('cmd').value = defaultCmd;
 
     const defaultData = "banner-time-0-0-Đây là một đoạn text dài. Có thể hiển thị không đúng trên nhiều thiết bị.";
     document.getElementById('data').value = defaultData;
+
+    // Add click
+    // document.getElementById('fetchDataBtn').addEventListener('click', fetchDataFile);
+    document.getElementById('runBtn').addEventListener('click', runCommand);
+    document.getElementById('packageSelector').addEventListener('change', setPackageName);
 </script>
 </body>
 
