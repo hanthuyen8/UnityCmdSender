@@ -1,0 +1,27 @@
+[
+  {
+    "cmd": "open_lv",
+    "sample": "1000",
+    "desc": "Mở level"
+  },
+  {
+    "cmd": "win",
+    "sample": "_",
+    "desc": "Thắng Level"
+  },
+  {
+    "cmd": "lose",
+    "sample": "_",
+    "desc": "Thua Level"
+  },
+  {
+    "cmd": "open_ads",
+    "sample": "_",
+    "desc": "Mở quảng cáo"
+  },
+  {
+    "cmd": "noti_welcome",
+    "sample": "_",
+    "desc": "Thông báo"
+  }
+]

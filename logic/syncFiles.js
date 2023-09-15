@@ -16,7 +16,7 @@ const kIdleText = 'Kiểm tra';
 async function fetchDataFile(onCompleted) {
     const packageName = reader.Helper.getPackageValue();
     const fileName = `${packageName}.json`;
-    const host = `https://app-test.bombcrypto.io/nhanc18/unity_cmd_sender/`;
+    const host = `https://storage.googleapis.com/nhanc18-dev-blog/unity-cmd-sender/`;
     const rand = Math.floor(Math.random() * 100000);
     const requestPath = `${host}${fileName}?p=${rand}`;
     const saveFolderPath = config.getDataFolderPath();

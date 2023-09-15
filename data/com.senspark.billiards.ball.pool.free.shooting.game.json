@@ -1,0 +1,32 @@
+[
+  {
+    "cmd": "add_coin",
+    "sample": "1000",
+    "desc": "Thêm Coin"
+  },
+  {
+    "cmd": "add_booster",
+    "sample": "_",
+    "desc": "Thêm Booster ngẫu nhiên"
+  },
+  {
+    "cmd": "add_heart",
+    "sample": "30",
+    "desc": "Thêm Tim"
+  },
+  {
+    "cmd": "open_lv",
+    "sample": "15",
+    "desc": "Mở Level _"
+  },
+  {
+    "cmd": "win",
+    "sample": "_",
+    "desc": "Thắng Level"
+  },
+  {
+    "cmd": "lose",
+    "sample": "_",
+    "desc": "Thua Level"
+  }
+]

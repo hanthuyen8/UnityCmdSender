@@ -1,0 +1,22 @@
+[
+  {
+    "cmd": "add_coin",
+    "sample": "1000",
+    "desc": "Thêm Coin"
+  },
+  {
+    "cmd": "pass_day",
+    "sample": "_",
+    "desc": "Qua ngày"
+  },
+  {
+    "cmd": "remove_no_ads",
+    "sample": "_",
+    "desc": "Cho mua lại gói no ads"
+  },
+  {
+    "cmd": "add_item",
+    "sample": "grass_block",
+    "desc": "Lấy item bất kỳ"
+  }
+]
